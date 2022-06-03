@@ -5,46 +5,45 @@ using SchoolApp.Data.Models;
 
 namespace SchoolApp.Data
 {
-    public class StudentLD
+    public class StudentGradeLD
     {
-        public static List<Student> GetAll()
+        public static List<StudentsGrade> GetAll()
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Students.ToList();
+            return dbContext.StudentsGrades.ToList();
         }
 
-        public static Student GetById(Guid id)
+        public static StudentsGrade GetById(Guid id)
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Students.Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
+            return dbContext.StudentsGrades.Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
         }
-        public static Student Insert(Student student)
+        public static StudentsGrade Insert(StudentsGrade StudentsGrade)
         {
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Students.Add(student);
+                dbContext.StudentsGrades.Add(StudentsGrade);
                 dbContext.SaveChanges();
-                return student;
+                return StudentsGrade;
             }
         }
-        public static Student Update(Student student)
+        public static StudentsGrade Update(StudentsGrade StudentsGrade)
         {
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Students.Update(student);
+                dbContext.StudentsGrades.Update(StudentsGrade);
                 dbContext.SaveChanges();
-                return student;
+                return StudentsGrade;
             }
         }
         public static void DeleteById(Guid id)
         {
-            var student = new Student() { Id = id };
+            var StudentsGrade = new StudentsGrade() { Id = id };
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Remove<Student>(student);
+                dbContext.Remove<StudentsGrade>(StudentsGrade);
                 dbContext.SaveChanges();
             };
         }
-
     }
 }
