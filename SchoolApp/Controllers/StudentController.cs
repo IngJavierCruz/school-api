@@ -7,21 +7,14 @@ using System.Threading.Tasks;
 using SchoolApp.Data.Models;
 using SchoolApp.Business;
 using System.Net;
+using SchoolApp.Models;
 
 namespace SchoolApp.Controllers
 {
-    public class ResponseApi
-    {
-        public dynamic data { get; set; }
-        public bool success { get; set; }
-        public string message { get; set; }
-    }
-
     [ApiController]
     [Route("[controller]")]
     public class StudentController : ControllerBase
     {
-       
         [HttpGet]
         public IEnumerable<Student> GetAll()
         {

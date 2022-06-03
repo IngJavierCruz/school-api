@@ -5,43 +5,43 @@ using SchoolApp.Data.Models;
 
 namespace SchoolApp.Data
 {
-    public class StudentLD
+    public class TeacherLD
     {
-        public static List<Student> GetAll()
+        public static List<Teacher> GetAll()
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Students.ToList();
+            return dbContext.Teachers.ToList();
         }
 
-        public static Student GetById(Guid id)
+        public static Teacher GetById(Guid id)
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Students.Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
+            return dbContext.Teachers.Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
         }
-        public static Student Insert(Student student)
+        public static Teacher Insert(Teacher Teacher)
         {
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Students.Add(student);
+                dbContext.Teachers.Add(Teacher);
                 dbContext.SaveChanges();
-                return student;
+                return Teacher;
             }
         }
-        public static Student Update(Student student)
+        public static Teacher Update(Teacher Teacher)
         {
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Students.Update(student);
+                dbContext.Teachers.Update(Teacher);
                 dbContext.SaveChanges();
-                return student;
+                return Teacher;
             }
         }
         public static void DeleteById(Guid id)
         {
-            var student = new Student() { Id = id };
+            var Teacher = new Teacher() { Id = id };
             using (var dbContext = new SchoolDbContext())
             {
-                dbContext.Remove<Student>(student);
+                dbContext.Remove<Teacher>(Teacher);
                 dbContext.SaveChanges();
             };
         }
