@@ -12,7 +12,7 @@ using SchoolApp.Models;
 namespace SchoolApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1.0/[controller]")]
     public class StudentsGradeController : ControllerBase
     {
         [HttpGet]
@@ -37,7 +37,7 @@ namespace SchoolApp.Controllers
             return NotFound(new ResponseApi()
             {
                 success = false,
-                message = string.Format("Estudiante con el id = {0} no encontrado", id)
+                message = string.Format("Registro con el id = {0} no encontrado", id)
             });
         } 
         
@@ -50,7 +50,7 @@ namespace SchoolApp.Controllers
                 {
                     data = StudentGradeLB.Insert(StudentsGrade),
                     success = true,
-                    message = "Estudiante creado con éxito"
+                    message = "Registro creado con éxito"
                 });
             }
             return BadRequest(new ResponseApi()
@@ -69,7 +69,7 @@ namespace SchoolApp.Controllers
                 {
                     data = StudentGradeLB.Update(StudentsGrade),
                     success = true,
-                    message = "Estudiante actualizado con éxito"
+                    message = "Registro actualizado con éxito"
                 });
             }
             return BadRequest(new ResponseApi()
@@ -89,13 +89,13 @@ namespace SchoolApp.Controllers
                 return Ok(new ResponseApi()
                 {
                     success = true,
-                    message = "Estudiante eliminado con éxito"
+                    message = "Registro eliminado con éxito"
                 });
             }
             return NotFound(new ResponseApi()
             {
                 success = false,
-                message = string.Format("Estudiante con el id = {0} no encontrado", id)
+                message = string.Format("Registro con el id = {0} no encontrado", id)
             });
         }
     }

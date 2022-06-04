@@ -12,7 +12,7 @@ using SchoolApp.Models;
 namespace SchoolApp.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/v1.0/[controller]")]
     public class GradeController : ControllerBase
     {
         [HttpGet]
