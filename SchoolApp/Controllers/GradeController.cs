@@ -16,9 +16,14 @@ namespace SchoolApp.Controllers
     public class GradeController : ControllerBase
     {
         [HttpGet]
-        public IEnumerable<Grade> GetAll()
+        public IActionResult GetAll()
         {
-            return GradeLB.GetAll();
+            return Ok(new ResponseApi()
+            {
+                data = GradeLB.GetAll(),
+                success = true,
+                message = "Consulta con éxito"
+            });
         }
 
         [HttpGet("{id}")]
