@@ -27,9 +27,9 @@ namespace SchoolApp.Business
         {
             return TeacherLD.Update(Teacher);
         }
-        public static Teacher DeleteById(Guid id)
+        public static void DeleteById(Guid id)
         {
-            return TeacherLD.GetById(id);
+            TeacherLD.DeleteById(id);
         }
     }
 }

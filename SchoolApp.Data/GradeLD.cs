@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using SchoolApp.Data.Models;
 
 namespace SchoolApp.Data
@@ -10,13 +11,13 @@ namespace SchoolApp.Data
         public static List<Grade> GetAll()
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Grades.ToList();
+            return dbContext.Grades.Include(x => x.Teacher).ToList();
         }
 
         public static Grade GetById(Guid id)
         {
             using var dbContext = new SchoolDbContext();
-            return dbContext.Grades.Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
+            return dbContext.Grades.Include(x => x.Teacher).Where(x => x.Id.ToString() == id.ToString()).FirstOrDefault();
         }
         public static Grade Insert(Grade Grade)
         {
